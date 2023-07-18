@@ -17,6 +17,9 @@ C) Agresivo.''',
 # Pregunta 1
 pregunta_1 = st.text_input('Nombre:',)
 
+if not pregunta_1:
+    st.warning('Este campo es obligatorio. Por favor, ingrese su nombre.')
+
 # Pregunta 2
 pregunta_2 = st.number_input('Indique su edad:', step=1)
 
@@ -380,7 +383,7 @@ if st.button ("Enviar encuesta y obtener resultados"):
             " a la gestora. Con este cuestionario hemos analizado sus" +
             " sesgos cognitivos y emocionales y nuestro algoritmo ha" +
             " determinado qué haremos para evitar que estos sesgos" +
-            " puedan afectarr negativamente a su inversión. Por ello," +
+            " puedan afectar negativamente a su inversión. Por ello," +
             " desde la gestora recomendamos:\n\n"
             f" {solucion}\n\n Estas recomendaciones se realizan en función del sesgo" +
             " que usted, como inversor, ha obtenido como resultado de esta" +
