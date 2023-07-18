@@ -376,13 +376,16 @@ if (Sesgo_1 == "Racional" or Sesgo_2 == "Racional" or Sesgo_3 == "Racional" or S
 #Botón para el cálculo
 
 if st.button ("Enviar encuesta y obtener resultados"):
-    st.write (f" Buenas {pregunta_1} después de realizar las preguntas" +
-            " y analizar como es su forma de pensar le recomendamos realizar" +
-            " las siguientes actuaciones en la evolución de su cartera:\n\n"
+    st.write (f"{pregunta_1}, estamos encantados de darle la bienvenida" +
+            " a la gestora. Con este cuestionario hemos analizado sus" +
+            " sesgos cognitivos y emocionales y nuestro algoritmo ha" +
+            " determinado qué haremos para evitar que estos sesgos" +
+            " puedan afectarr negativamente a su inversión. Por ello," +
+            " desde la gestora recomendamos:\n\n"
             f" {solucion}\n\n Estas recomendaciones se realizan en función del sesgo" +
-            " presentado por el inversor cuyo comportamiento implicará" +
-            " diferencias a la hora de invertir entre varias personas." +
-            " Los sesgos observados a lo largo de la encuesta han sido los siguientes:\n\n"
+            " que usted, como inversor, ha obtenido como resultado de esta" +
+            " encuesta. Los sesgos observados a lo largo de la encuesta han" +
+            " sido los siguientes:\n\n"
             f"{Explicacion}")
     
     
