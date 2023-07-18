@@ -18,7 +18,7 @@ C) Agresivo.''',
 pregunta_1 = st.text_input('Nombre:',)
 
 if not pregunta_1:
-    st.warning('Este campo es obligatorio. Por favor, ingrese su nombre.')
+    st.error('Este campo es obligatorio. Por favor, ingrese su nombre.')
 
 # Pregunta 2
 pregunta_2 = st.number_input('Indique su edad:', step=1)
