@@ -377,7 +377,7 @@ if (Sesgo_1 == "Racional" or Sesgo_2 == "Racional" or Sesgo_3 == "Racional" or S
 
 if st.button ("Enviar encuesta y obtener resultados"):
     if pregunta_1 == "":
-        st.write (f"Primero debe de poner su nombre. Este campo es obligatorio.")
+        st.write (f"Debe de introducir su nombre. Este campo es obligatorio.")
     else:
         st.write (f"{pregunta_1}, estamos encantados de darle la bienvenida" +
             " a la gestora. Con este cuestionario hemos analizado sus" +
