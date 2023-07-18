@@ -330,28 +330,28 @@ if (Sesgo_1 == "Racional" or Sesgo_2 == "Racional" or Sesgo_3 == "Racional" or S
 
 # Explicación de sesgos
 
-Loss_aversion_cal = '''- El sesgo de Loss_aversion aparece cuando un cliente
+Loss_aversion_cal = '''- El sesgo de Loss Aversion aparece cuando un cliente
  prefiere evitar las pérdidas a tener ganancias. Este sesgo implica que los
  inversores mantengan una inversión demasiado tiempo y, en ocasiones, desatar
  ventas precipitadas.'''
-Status_Quo_cal = '''- Status_Quo es un sesgo emocional que predispone a las
+Status_Quo_cal = '''- Status Quo es un sesgo emocional que predispone a las
  personas a elegir una opción que ratifique lo conocido en lugar de opciones
  alternativas que podrían generar cambios. Este sesgo implica que los inversores
  cojan cariño a ciertas posiciones, manteniendo inversiones que no son adecuadas 
  en el momento. También aparece cuando los inversores no quieren hacer frente a 
  costes por cambiar la posición.'''
-Efecto_Ancla_cal = '''- El efecto ancla es un sesgo cognitivo que aparece cuando
+Efecto_Ancla_cal = '''- El Efecto Ancla es un sesgo cognitivo que aparece cuando
  las personas tienden a basar sus decisiones o valoraciones en una referencia
  inicial, llamada "ancla", incluso si esa referencia no es relavante o precisa.
  Por ejemplo: Un reloj cuesta 200€ y lo ponen de oferta al 50%. Puede que el
  reloj en dicho momento su valor real sea de 50€, pero al percibir una oferta
  del 50% pensamos que es un gran precio y por lo tanto, lo compramos.'''
-Conservadurismo_cal = '''- El conservadurismo aparece cuando las personas se
+Conservadurismo_cal = '''- El Conservadurismo aparece cuando las personas se
  aferran a sus puntos de vista anteriores o pronósticos con el objetivo de
  conocer nueva información. Este sesgo implica que un inversor pueda ser inflexible
  a la hora de presentar nueva información sobre sus inversiones, ocasionando una
  reacción tardía ante nueva información.'''
-Racional_cal = '''- Un comportamiento racional aparece cuando nuestros pensamientos
+Racional_cal = '''- Un comportamiento Racional aparece cuando nuestros pensamientos
  se corresponden con la realidad, es decir, están basados en hechos o datos fiables
  y por lo tanto podemos realizar inversionas más objetivas.'''
 
