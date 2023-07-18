@@ -285,54 +285,73 @@ else:
 
 # Recomendaciones en función de sesgo
 
-Loss_aversion_exp = "Un aumento del peso en RV..."
-Status_Quo_exp = "Una bajada de la RF..."
-Efecto_Ancla_exp = "Un aumento en RV..."
-Conservadurismo_exp = "Reducción de riesgo..."
-Racional_exp = "Mantenemos los pesos de nuestra cartera..."
+Loss_aversion_exp = '''- Evitar sobreexposición mediática para no enfocarse en el corto plazo.'''
+Status_Quo_exp = '''- Realizar una reunión/llamada con el cliente cada 15 días
+ para informarle de cómo está el mercado y cuáles son las oportunidades y tendencias
+ que emergen.
+ 
+ - Maximizar la diversificación de la cartera del cliente, para que no siienta que 
+ "todos los huevos están en la misma cesta".'''
+Efecto_Ancla_exp = '''- Utilizar la volatilidad a corto plazo para realizar rebalanceos
+ sistemáticos mensualmente mientras se mantienen los objetivos a largo plazo.
+
+- Realizar simulaciones de distintos escenarios (recesión, expansión, estanflación) para
+ observar cómo se comportaría la cartera y que el cliente decida con qué nivel de riesgo
+ se encuentra cómodo.'''
+Conservadurismo_exp = ''''''
+Loss_Conserv = '''- Establecer guías y reglas objetivas para comprar, vender o rebalancer la cartera,
+ especialmente si las condiciones de mercado son más duras y requieren un enfoque sistemático.'''
+Status_Conser = '''- Realizar un rebalanceo mensual y modificar la cartera si el gestor lo ve necesario.'''
+Racional_exp = ''''''
 
 solucion = ""
 
 if (Sesgo_1 == "Loss_Aversion"):
-    solucion += Loss_aversion_exp + "\n"
+    solucion += Loss_aversion_exp + "\n\n"
+
+if (Sesgo_1 == "Loss_Aversion" or Sesgo_4 == "Conservadurismo"):
+    solucion += Loss_Conserv + "\n\n"
 
 if (Sesgo_2 == "Status_Quo"):
-    solucion += Status_Quo_exp + "\n"
+    solucion += Status_Quo_exp + "\n\n"
+
+if (Sesgo_2 == "Status_Conserv" or Sesgo_4 == "Conservadurismo"):
+    solucion += Status_Conser + "\n\n"
 
 if (Sesgo_3 == "Efecto_Ancla"):
-    solucion += Efecto_Ancla_exp + "\n"
+    solucion += Efecto_Ancla_exp + "\n\n"
 
 if (Sesgo_4 == "Conservadurismo"):
-    solucion += Conservadurismo_exp + "\n"
+    solucion += Conservadurismo_exp + "\n\n"
 
 if (Sesgo_1 == "Racional" or Sesgo_2 == "Racional" or Sesgo_3 == "Racional" or Sesgo_4 == "Racional"):
-    solucion += Racional_exp + "\n"
+    solucion += Racional_exp + "\n\n"
 
 
 # Explicación de sesgos
 
-Loss_aversion_cal = '''El sesgo de Loss_aversion aparece cuando un cliente
+Loss_aversion_cal = '''- El sesgo de Loss_aversion aparece cuando un cliente
  prefiere evitar las pérdidas a tener ganancias. Este sesgo implica que los
  inversores mantengan una inversión demasiado tiempo y, en ocasiones, desatar
  ventas precipitadas.'''
-Status_Quo_cal = '''Status_Quo es un sesgo emocional que predispone a las
+Status_Quo_cal = '''- Status_Quo es un sesgo emocional que predispone a las
  personas a elegir una opción que ratifique lo conocido en lugar de opciones
  alternativas que podrían generar cambios. Este sesgo implica que los inversores
  cojan cariño a ciertas posiciones, manteniendo inversiones que no son adecuadas 
  en el momento. También aparece cuando los inversores no quieren hacer frente a 
  costes por cambiar la posición.'''
-Efecto_Ancla_cal = '''El efecto ancla es un sesgo cognitivo que aparece cuando
+Efecto_Ancla_cal = '''- El efecto ancla es un sesgo cognitivo que aparece cuando
  las personas tienden a basar sus decisiones o valoraciones en una referencia
  inicial, llamada "ancla", incluso si esa referencia no es relavante o precisa.
  Por ejemplo: Un reloj cuesta 200€ y lo ponen de oferta al 50%. Puede que el
  reloj en dicho momento su valor real sea de 50€, pero al percibir una oferta
  del 50% pensamos que es un gran precio y por lo tanto, lo compramos.'''
-Conservadurismo_cal = '''El conservadurismo aparece cuando las personas se
+Conservadurismo_cal = '''- El conservadurismo aparece cuando las personas se
  aferran a sus puntos de vista anteriores o pronósticos con el objetivo de
  conocer nueva información. Este sesgo implica que un inversor pueda ser inflexible
  a la hora de presentar nueva información sobre sus inversiones, ocasionando una
  reacción tardía ante nueva información.'''
-Racional_cal = '''Un comportamiento racional aparece cuando nuestros pensamientos
+Racional_cal = '''- Un comportamiento racional aparece cuando nuestros pensamientos
  se corresponden con la realidad, es decir, están basados en hechos o datos fiables
  y por lo tanto podemos realizar inversionas más objetivas.'''
 
@@ -358,9 +377,9 @@ if (Sesgo_1 == "Racional" or Sesgo_2 == "Racional" or Sesgo_3 == "Racional" or S
 
 if st.button ("Enviar encuesta y obtener resultados"):
     st.write (f" Buenas {pregunta_1} después de realizar las preguntas" +
-            " y analizar como es su forma de pensar le recomendamos" +
-            f" las siguientes actuaciones en su cartera: {solucion}\n\n"
-            " Estas recomendaciones se realizan en función del sesgo" +
+            " y analizar como es su forma de pensar le recomendamos realizar" +
+            " las siguientes actuaciones en la evolución de su cartera:\n\n"
+            f" {solucion}\n\n Estas recomendaciones se realizan en función del sesgo" +
             " presentado por el inversor cuyo comportamiento implicará" +
             " diferencias a la hora de invertir entre varias personas." +
             " Los sesgos observados a lo largo de la encuesta han sido los siguientes:\n\n"
