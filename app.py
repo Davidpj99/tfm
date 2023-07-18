@@ -40,20 +40,20 @@ b) Aunque recupere lo perdido, mantendré la posición
 # Pregunta 5
 pregunta_5 = st.radio(
 '''6. Suponga que hace un plan para invertir 50.000€.
- Eres presentado con dos alternativas. ¿Qué escenario
- preferirías tener?: 
+ Se le presentan dos alternativas. ¿Qué escenario
+ preferiría tener?: 
 
-a) Tener la seguridad de que recuperaré mis 50.000€ como
- mínimo, incluso si no lo hago hacer más dinero. 
+a) Tener la seguridad de recuperar los 50.000€ como
+ mínimo, pudiendo conseguir más dinero. 
 
 b) Tener un 50% de posibilidades de obtener 70.000€ y
- un 50 por ciento de posibilidades de obteniendo 35.000€.''',
+ un 50 por ciento de posibilidades de convertirse en 35.000€.''',
 ['a', 'b'],
 )
 
 # Pregunta 6
 pregunta_6 = st.radio(
-'''7. Elige uno de estos dos resultados: 
+'''7. Elija uno de estos dos resultados: 
 
 a) Una ganancia asegurada de 475€. 
 
@@ -65,62 +65,63 @@ b) Un 25% de posibilidad de ganar 2.000€ y un 75% de no
 # Pregunta 7
 pregunta_7 = st.radio(
 '''8. Su asesor financiero le presenta un plan para reequilibrar
- su cartera. Este reequilibrio requeriría que hiciera una serie
- de cambios sustanciales en su cartera, que incluso pueden implicar
- el desencadenamiento de hechos imponibles que no son agradables, pero son
- bastante necesarios para obtener su cartera donde debe estar.
- ¿Cuál de los siguientes es más probable?: 
+ su cartera. Este reequilibrio requiere de una serie de cambios 
+ potenciales, que incluso pueden implicar el desencadenamiento 
+ de hechos desagradables para el cliente, pero son necesarios 
+ para reajustar su cartera.
+ ¿Qué acontecimiento es más probable?: 
 
 a) Usted toma acción sobre la recomendación inmediatamente. 
 
 b) Usted dice que "lo pensará" para hacer una revisión honesta y 
- volver a su asesor en una semana, y en realidad se pondrá en
+ volver a su asesor en una semana, pero en realidad se pondrá en
  contacto con su asesor en ese momento.
 
-c) Dices que 'lo pensarás' y te comunicarás con tu asesor en una
- semana y probablemente contactará con su asesor y puede
- que no por tres o seis meses porque tiende a angustiarse por hacer
- cambios sustanciales como este ejemplo.''',
+c) Dice que "lo pensará" y que se comunicará con su asesor en una
+ semana. Probablemente no contactará con su asesor hasta dentro de
+ tres meses porque tiende a angustiarse por hacer cambios 
+ sustanciales en su cartera.''',
 ['a', 'b', 'c'],
 )
 
 # Pregunta 8
 pregunta_8 = st.radio(
 '''9. Su cartera de inversiones contiene bonos corporativos de
- cierta calidad. El bono le ha estado proporcionando ingresos
- y usted está feliz con eso. Su asesor financiero analiza sus
- tenencias de bonos y recomienda que reemplace el bono corporativo
- con un bono municipal de calidad comparable, estimando que obtendrá
- una mejor rentabilidad después de impuestos y tasas sobre ganancias de
- capital. No estás familiarizado con este bono municipal.
- ¿Cuál es su respuesta más probable?: 
+ cierta calidad. El bono le ha estado proporcionando ingresos constantes
+ y está contento. Su asesor financiero analiza sus tenencias de bonos 
+ y le recomienda que reemplace el bono corporativo por un bono municipal 
+ de calidad comparable, estimando que obtendrá una mejor rentabilidad 
+ después de impuestos y tasas sobre ganancias de capital. 
+ Usted no se encuentra familiarizado con este bono municipal.
+ ¿Cuál sería su reacción ante esta recomendación?: 
 
-a) Venderé el corporativo y compraré el bono municipal. 
+a) Vendería el corporativo y compraría el bono municipal. 
 
-b) Mantendré las cosas como están.''',
+b) Mantendría las cosas como están.''',
 ['a', 'b'],
 )
 
 # Pregunta 9
 pregunta_9 = st.radio(
-'''10. Suponga que ha heredado una inversión totalmente líquida en
- un mina de oro sudafricana de tu excéntrico tío Jim. Usted
- discute el activo con su asesor financiero, y ella concluye
- que su cartera ya contiene suficiente oro y mercancías. Más
- importante, su herencia no es un activo diversificado. Su
- asesor recomienda venderlo. ¿Qué es mas probable que haga?:
+'''10. Suponga que ha heredado una inversión totalmente líquida de
+ una mina de oro sudafricana de su excéntrico tío Jim. Usted
+ discute el activo con su asesor financiero, y concluye que su 
+ cartera ya contiene suficiente oro y materias primas. Además, 
+ añade que su herencia no es un activo diversificado y recomienda
+ venderlo. ¿Qué sería más probable?:
 
-a) Venderé, según lo recomendado por mi asesor financiero.
+a) Vendería, según lo recomendado por mi asesor financiero.
 
-b) Mantendré el interés de la mina de oro, porque no me gusta vender o modificar cosas que la gente pasa y me deja.''',
+b) Mantendría el interés de la mina de oro, puesto que es una herencia
+ y no me agradan los cambios.''',
 ['a', 'b'],
 )
 
 # Pregunta 10
 pregunta_10 = st.radio(
 '''11. Compra una acción a 50€. Sube a 60€ en unos pocos meses, y
- luego baja a 40€ por unos meses después. No está seguro de lo que
- sucederá a continuación. ¿Cómo responderías a este escenario?:
+ luego baja a 40€ tras unos meses después. No está seguro de lo que
+ sucederá a continuación. ¿Cómo respondería a este escenario?:
 
 a) Vendo por el miedo a que pueda caer más.
 
@@ -132,7 +133,7 @@ b) Mantengo posición con la esperanza de que suba hasta los 50€
 # Pregunta 11
 pregunta_11 = st.radio(
 '''12. En una escala del 1 al 3, siendo 3 - "totalmente de acuerdo",
- ¿cuánto está de acuerdo con lo siguiente: Al pensar en vender
+ ¿cuánto está de acuerdo con lo siguiente?: Al pensar en vender
  una inversión, el precio que pagué es un factor importante que
  considero antes de tomar cualquier decisión: 
  
@@ -152,52 +153,52 @@ pregunta_12 = st.radio(
  que no ha caído nieve. ¿Cuál es su reacción natural a esta
  información?: 
 
-a) Todavía hay tiempo para que caiga mucha nieve, por lo que mi
+a) Todavía hay tiempo para que nieve, por lo que su
  pronóstico probablemente sea correcto.
 
-b) Todavía puede haber tiempo para un poco de nieve, pero puede
- que me haya equivocado en mi pronóstico.
+b) Todavía puede haber tiempo para que nieve, pero puede
+ que se haya equivocado en su pronóstico.
 
-c) Mi experiencia me dice que mi pronóstico probablemente fue
- incorrecto la mayoría del invierno ha pasado; por lo tanto,
- la cantidad acumulada de nieve no es probable que sea significativa.''',
+c) Su experiencia le dice que su pronóstico probablemente fue
+ incorrecto porque la mayoría del invierno ha pasado; por lo tanto,
+ es poco probable que nieve.''',
 ['a', 'b', 'c'],
 )
 
 # Pregunta 13
 pregunta_13 = st.radio(
-'''14. Cuando escucha noticias que implica un potencial negativo 
+'''14. Cuando escucha noticias que implican un potencial negativo 
  para el precio de una inversión que posee,
- ¿cuál es su natural reacción a esta información?:
+ ¿cuál sería su reacción ante dicha información?:
  
-a) Tiendo a ignorar la información porque ya he hecho elinversión,
- ya he determinado que la empresa tendrá éxito.
+a) Tiende a ignorar la información porque ya ha realizado la inversión,
+ ya ha determinado que la empresa tendrá éxito.
  
-b) Reevaluaré mis razones para comprar las acciones, pero
- probablemente apegarme a él porque normalmente me atengo
- a mi determinación original de que una empresa tendrá éxito.
+b) Reevaluará su razonamiento para comprar acciones, pero
+ probablemente mantendrá su pensamiento inicial, ya que
+ opina que la empresa tendrá éxito.
 
-c) Reevaluaré mi razonamiento para comprar las acciones y
- decidiré, basado en una consideración objetiva de todos
+c) Reevaluará su razonamiento para comprar acciones y
+ decidirá, basado en una consideración objetiva de todos
  los hechos, qué hacer a continuación.''',
 ['a', 'b', 'c'],
 )
 
 # Pregunta 14
 pregunta_14 = st.radio(
-'''15. Supongamos que realizas una inversión basada en tu propia
- investigación. Un asesor te presenta información que
- contradice tu creencia sobre esta inversión. ¿Cómo responderías?:
+'''15. Suponga que realiza una inversión basada en su propia
+ investigación. Un asesor le presenta información que
+ contradice su creencia sobre dicha inversión. ¿Cómo respondería?:
  
-a) No le hago caso. Me fío más de mi investigación.
+a) No le hace caso. Se fía más de su investigación.
  
-b) Pido que me dé sus argumentos para entender por
- qué su información contradice mi creencia, aunque
- generalmente me decantaré por hacer caso a mi investigación.
+b) Pide que le dé argumentos para entender por
+ qué su información contradice su creencia, aunque
+ generalmente se decantará por su pensamiento.
 
-c) Estudio sus argumentos y me considero capaz de decantarme
- objetivamente por una de las dos opciones, sin que mi propia
- investigación me condicione.''',
+c) Estudia sus argumentos y considera capaz de decantarse
+ objetivamente por una de las dos opciones, sin que su propia
+ investigación le condicione.''',
 ['a', 'b', 'c'],
 )
 
@@ -310,28 +311,47 @@ if (Sesgo_1 == "Racional" or Sesgo_2 == "Racional" or Sesgo_3 == "Racional" or S
 
 # Explicación de sesgos
 
-Loss_aversion_cal = '''El sesgo de Loss_aversion aparece cuando...'''
-Status_Quo_cal = '''Status_Quo es un sesgo...'''
-Efecto_Ancla_cal = '''El efecto ancla aparece cuando...'''
-Conservadurismo_cal = '''El conservadurismo es...'''
-Racional_cal = '''Un comportamiento racional es aquel...'''
+Loss_aversion_cal = '''El sesgo de Loss_aversion aparece cuando un cliente
+ prefiere evitar las pérdidas a tener ganancias. Este sesgo implica que los
+ inversores mantengan una inversión demasiado tiempo y, en ocasiones, desatar
+ ventas precipitadas.'''
+Status_Quo_cal = '''Status_Quo es un sesgo emocional que predispone a las
+ personas a elegir una opción que ratifique lo conocido en lugar de opciones
+ alternativas que podrían generar cambios. Este sesgo implica que los inversores
+ cojan cariño a ciertas posiciones, manteniendo inversiones que no son adecuadas 
+ en el momento. También aparece cuando los inversores no quieren hacer frente a 
+ costes por cambiar la posición.'''
+Efecto_Ancla_cal = '''El efecto ancla es un sesgo cognitivo que aparece cuando
+ las personas tienden a basar sus decisiones o valoraciones en una referencia
+ inicial, llamada "ancla", incluso si esa referencia no es relavante o precisa.
+ Por ejemplo: Un reloj cuesta 200€ y lo ponen de oferta al 50%. Puede que el
+ reloj en dicho momento su valor real sea de 50€, pero al percibir una oferta
+ del 50% pensamos que es un gran precio y por lo tanto, lo compramos.'''
+Conservadurismo_cal = '''El conservadurismo aparece cuando las personas se
+ aferran a sus puntos de vista anteriores o pronósticos con el objetivo de
+ conocer nueva información. Este sesgo implica que un inversor pueda ser inflexible
+ a la hora de presentar nueva información sobre sus inversiones, ocasionando una
+ reacción tardía ante nueva información.'''
+Racional_cal = '''Un comportamiento racional aparece cuando nuestros pensamientos
+ se corresponden con la realidad, es decir, están basados en hechos o datos fiables
+ y por lo tanto podemos realizar inversionas más objetivas.'''
 
 Explicacion = ""
 
 if (Sesgo_1 == "Loss_Aversion"):
-    Explicacion += Loss_aversion_cal + "\n"
+    Explicacion += Loss_aversion_cal + "\n\n"
 
 if (Sesgo_2 == "Status_Quo"):
-    Explicacion += Status_Quo_cal + "\n"
+    Explicacion += Status_Quo_cal + "\n\n"
 
 if (Sesgo_3 == "Efecto_Ancla"):
-    Explicacion += Efecto_Ancla_cal + "\n"
+    Explicacion += Efecto_Ancla_cal + "\n\n"
 
 if (Sesgo_4 == "Conservadurismo"):
-    Explicacion += Conservadurismo_cal + "\n"
+    Explicacion += Conservadurismo_cal + "\n\n"
 
 if (Sesgo_1 == "Racional" or Sesgo_2 == "Racional" or Sesgo_3 == "Racional" or Sesgo_4 == "Racional"):
-    Explicacion += Racional_cal + "\n"
+    Explicacion += Racional_cal + "\n\n"
 
 
 #Botón para el cálculo
