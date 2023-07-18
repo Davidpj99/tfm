@@ -375,9 +375,10 @@ if (Sesgo_1 == "Racional" or Sesgo_2 == "Racional" or Sesgo_3 == "Racional" or S
 
 #Botón para el cálculo
 
-if st.button ("Enviar encuesta y obtener resultados") or pregunta_1 == "":
-    st.write (f"Debe de introducir su nombre")
-else:
+if st.button ("Enviar encuesta y obtener resultados"):
+    if pregunta_1 = "":
+    st.write ("Primero debe de poner su nombre. Este campo es obligatorio.")
+    else:
     st.write (f"{pregunta_1}, estamos encantados de darle la bienvenida" +
             " a la gestora. Con este cuestionario hemos analizado sus" +
             " sesgos cognitivos y emocionales y nuestro algoritmo ha" +
