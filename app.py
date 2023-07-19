@@ -1,5 +1,19 @@
+# Código TFM
+
 import streamlit as st
 import pandas as pd
+
+from reportlab.lib.pagesizes import letter
+from reportlab.lib import colors
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak
+from reportlab.lib.styles import getSampleStyleSheet
+
+from tabulate import tabulate
+
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.application import MIMEApplication
 
 # Pregunta 0
 pregunta_0 = st.radio(
@@ -202,15 +216,18 @@ c) Estudia sus argumentos y considera capaz de decantarse
 ['a', 'b', 'c'],
 )
 
-#Guardar respuestas
+# Pregunta F
+pregunta_f = st.text_input('Email para recibir copia de resultados:',)
+
+#Guardar respuestas.
 Resultados = {
     "Respuestas" : [pregunta_0, pregunta_1, pregunta_2, pregunta_3,
                     pregunta_4, pregunta_5, pregunta_6, pregunta_7,
                     pregunta_8, pregunta_9, pregunta_10, pregunta_11,
-                    pregunta_12, pregunta_13, pregunta_14]
+                    pregunta_12, pregunta_13, pregunta_14, pregunta_f]
 }
 
-#Definición Sesgos
+#Definición de los sesgos.
 Loss_aversion = Resultados["Respuestas"][4:7].count("a")/3
 
 if (Loss_aversion > 0.5):
@@ -283,7 +300,7 @@ else:
     Sesgo_4 = "Racional"
 
 
-# Recomendaciones en función de sesgo
+# Recomendaciones en función de sesgo obtenido.
 
 Loss_aversion_exp = '''- Evitar sobreexposición mediática para no enfocarse en el corto plazo.'''
 Status_Quo_exp = '''- Realizar una reunión/llamada con el cliente cada 15 días
@@ -328,7 +345,7 @@ if (Sesgo_1 == "Racional" or Sesgo_2 == "Racional" or Sesgo_3 == "Racional" or S
     solucion += Racional_exp + "\n\n"
 
 
-# Explicación de sesgos
+# Explicación de los sesgos.
 
 Loss_aversion_cal = '''- El sesgo de Loss Aversion aparece cuando un cliente
  prefiere evitar las pérdidas a tener ganancias. Este sesgo implica que los
@@ -373,23 +390,133 @@ if (Sesgo_1 == "Racional" or Sesgo_2 == "Racional" or Sesgo_3 == "Racional" or S
     Explicacion += Racional_cal + "\n\n"
 
 
-#Botón para el cálculo
+#Botón para el cálculo final
+
+def create_pdf(content, tabla_resultados):
+    doc = SimpleDocTemplate("resultado_encuesta.pdf", pagesize=letter)
+    styles = getSampleStyleSheet()
+    elements = []
+
+    # Dividir el contenido en diferentes párrafos
+    paragraphs = content.split("\n\n")
+    for para in paragraphs:
+        elements.append(Paragraph(para, styles["Normal"]))
+        elements.append(Spacer(1, 12))  # Espacio entre párrafos
+
+    # Agregar un salto de página para pasar a la siguiente página
+    elements.append(PageBreak())
+    
+    # Convertir el DataFrame 'Resultados' en una lista de listas para la tabla
+    tabla_resultados_list = [['Respuestas']] + [[row] for row in tabla_resultados['Respuestas']]
+
+    # Agregar la tabla al PDF
+    t = Table(tabla_resultados_list)
+    t.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, 0), colors.white),
+                           ('FONTNAME', (0, 0), (-1, 0), 'Helvetica'),
+                           ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+                           ('FONTNAME', (0, 0), (-1, 0), 'Helvetica'),
+                           ('BOTTOMPADDING', (0, 0), (-2, 0), 12),
+                           ('BACKGROUND', (0, 1), (-1, -1), colors.cyan),
+                           ('GRID', (0, 0), (-1, -1), 1, colors.black)]))
+    elements.append(t)
+
+    doc.build(elements)
 
 if st.button ("Enviar encuesta y obtener resultados"):
     if pregunta_1 == "":
         st.write (f"Debe de introducir su nombre. Este campo es obligatorio.")
+    elif pregunta_f == "":
+        st.write (f"Debe de introducir su email. Este campo es obligatorio.")
     else:
-        st.write (f"{pregunta_1}, estamos encantados de darle la bienvenida" +
-            " a la gestora. Con este cuestionario hemos analizado sus" +
-            " sesgos cognitivos y emocionales y nuestro algoritmo ha" +
-            " determinado qué haremos para evitar que estos sesgos" +
-            " puedan afectar negativamente a su inversión. Por ello," +
-            " desde la gestora recomendamos:\n\n"
-            f" {solucion}\n\n Estas recomendaciones se realizan en función del sesgo" +
-            " que usted, como inversor, ha obtenido como resultado de esta" +
-            " encuesta. Los sesgos observados a lo largo de la encuesta han" +
-            " sido los siguientes:\n\n"
-            f"{Explicacion}")
+        pdf_content = f"{pregunta_1}, estamos encantados de darle la bienvenida" + \
+            " a la gestora. Con este cuestionario hemos analizado sus" + \
+            " sesgos cognitivos y emocionales y nuestro algoritmo ha" + \
+            " determinado qué haremos para evitar que estos sesgos" + \
+            " puedan afectar negativamente a su inversión. Por ello," + \
+            " desde la gestora recomendamos:\n\n" + \
+            f" {solucion}\n\n Estas recomendaciones se realizan en función del sesgo" + \
+            " que usted, como inversor, ha obtenido como resultado de esta" + \
+            " encuesta. Los sesgos observados a lo largo de la encuesta han" + \
+            " sido los siguientes:\n\n" + \
+            f"{Explicacion}"
+
+        # Guardar el contenido en un archivo PDF
+        create_pdf(pdf_content, Resultados)
+        
+        # Mostrar el contenido en Streamlit
+        st.write(pdf_content)
+        st.write("El resultado de la encuesta se ha guardado como un archivo PDF. Espere a que le llegue el email.")
+
+        # Enviar el PDF por correo electrónico
+        sender_email = "davidpj8@gmail.com"  # Cambia esto al correo del remitente
+        sender_password = "zodzoatriifkwtkc"  # Cambia esto a la contraseña del remitente
+        receiver_email1 = "Mfia.tfm.2023@gmail.com"
+        receiver_email2 = f"{pregunta_f}" 
+
+        # Establecer conexión con el servidor de correo
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.starttls()
+        server.login(sender_email, sender_password)
+        
+        # Crear el mensaje
+        msg = MIMEMultipart()
+        msg["From"] = sender_email
+        msg["To"] = receiver_email1
+        msg["Subject"] = f"Resultado de la encuesta de {pregunta_1}"
+
+         # Añadir mensaje de texto al correo electrónico
+        mensaje = (f"Buenas {pregunta_1}, se adjunta en este email un 'PDF' con la copia de los resultados obtenidos.\n\n"
+        '''Un saludo,\n\nGestora Mfia.\n\nEste email es una respuesta automática de la encuesta.''')
+
+        msg.attach(MIMEText(mensaje, "plain"))
+
+        # Adjuntar el PDF al mensaje
+        with open("resultado_encuesta.pdf", "rb") as file:
+            attach_pdf = MIMEApplication(file.read(), _subtype="pdf")
+            attach_pdf.add_header("Content-Disposition", "attachment", filename="resultado_encuesta.pdf")
+        
+        msg.attach(attach_pdf)
+        
+        # Enviar el mensaje
+        server.sendmail(sender_email, receiver_email1, msg.as_string())
+        
+        # Cerrar la conexión con el servidor de correo
+        server.quit()
+
+        # Enviar el PDF por correo electrónico 2
+        sender_email = "davidpj8@gmail.com"  # Cambia esto al correo del remitente
+        sender_password = "zodzoatriifkwtkc"  # Cambia esto a la contraseña del remitente
+        receiver_email2 = f"{pregunta_f}" 
+
+        # Establecer conexión con el servidor de correo
+        server = smtplib.SMTP("smtp.gmail.com", 587)
+        server.starttls()
+        server.login(sender_email, sender_password)
+        
+        # Crear el mensaje
+        msg = MIMEMultipart()
+        msg["From"] = sender_email
+        msg["To"] = receiver_email2
+        msg["Subject"] = f"Resultado de la encuesta de {pregunta_1}"
+
+         # Añadir mensaje de texto al correo electrónico
+        mensaje = (f"Buenas {pregunta_1}, se adjunta en este email un 'PDF' con la copia de los resultados obtenidos.\n\n"
+        '''Un saludo,\n\nGestora Mfia.\n\nEste email es una respuesta automática de la encuesta.''')
+
+        msg.attach(MIMEText(mensaje, "plain"))
+
+        # Adjuntar el PDF al mensaje
+        with open("resultado_encuesta.pdf", "rb") as file:
+            attach_pdf = MIMEApplication(file.read(), _subtype="pdf")
+            attach_pdf.add_header("Content-Disposition", "attachment", filename="resultado_encuesta.pdf")
+        
+        msg.attach(attach_pdf)
+        
+        # Enviar el mensaje
+        server.sendmail(sender_email, receiver_email2, msg.as_string())
+        
+        # Cerrar la conexión con el servidor de correo
+        server.quit()
     
     
 
